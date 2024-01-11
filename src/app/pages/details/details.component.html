@@ -1,0 +1,26 @@
+<app-menu></app-menu>
+<div class="container">
+  <ng-template [ngIf]="isLoading">
+    <img *ngIf="movie.poster_path" [lazyLoad]="'https://image.tmdb.org/t/p/w185/' + movie.poster_path" alt="">
+    <div class="badge-container">
+      <div class="badge" *ngFor="let value of movie.genres">
+        <h4 class="text">
+          {{ value.name }}
+        </h4>
+      </div>
+    </div>
+    <h4> {{ movie.title }} </h4>
+    <p class="overview"> {{ movie.overview }} </p>
+    <div class="infos-container">
+      <div class="badge">
+        <p *ngIf="movie.budget"><strong>Budget: </strong><fa-icon [icon]="faDollar"></fa-icon>{{ movie.budget }} </p>
+      </div>
+      <div class="badge">
+        <p><strong>Popularity: </strong>{{ movie.popularity }} </p>
+      </div>
+      <div class="badge">
+        <p class="star"><fa-icon [icon]="starIcon" class="icon"></fa-icon>{{ movie.vote_average }}</p>
+      </div>
+    </div>
+  </ng-template>
+</div>
